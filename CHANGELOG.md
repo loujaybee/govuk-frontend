@@ -6,6 +6,16 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 
 Breaking changes:
 
+New features:
+
+Fixes:
+
+Internal:
+
+## 0.0.21-alpha (Breaking release)
+
+Breaking changes:
+
 - The link styles in the core layer no longer style `a` elements directly, but
   instead provide a `govuk-link` class which you will need to apply to links
   individually. (PR [#427](https://github.com/alphagov/govuk-frontend/pull/427))
@@ -41,9 +51,11 @@ Fixes:
 
 Internal:
 
+- Add prose scope example (PR [#429](https://github.com/alphagov/govuk-frontend/pull/429))
 - Links within the review app and the examples have been updated to use the
   `govuk-link` class.
   (PR [#427](https://github.com/alphagov/govuk-frontend/pull/427))
+- Improve documentation around publishing (PR [#430](https://github.com/alphagov/govuk-frontend/pull/430))  
 - Improve documentation around contributing (PR [#433](https://github.com/alphagov/govuk-frontend/pull/433))
 
 ## 0.0.21-alpha (Breaking release)
