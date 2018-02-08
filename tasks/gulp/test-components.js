@@ -30,11 +30,29 @@ gulp.task('html:axe', (done) => {
     // https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md
     a11yCheckOptions: {
       'rules': {
+        'landmark-one-main': { 'enabled': false }, // Esnures each document has a <main> attribute
         'document-title': { 'enabled': false }, // Ensures each HTML document contains a non-empty <title> element
         'html-has-lang': { 'enabled': false },  // Ensures every HTML document has a lang attribute
         'bypass': { 'enabled': false }          // Ensures each page has at least one mechanism for a user to bypass navigation and jump straight to the content
       }
     }
   }
-  return axe(options, done)
+  return axe(options, function (arg1, arg2, arg3) {
+    const report = require('../../axeReports/axeReport.json')
+    const violations =
+      report
+        .filter(item => {
+          return item.violations.length
+        })
+        .map(item => {
+          return item.violations
+        })
+
+    const hasViolations = violations.length > 0
+    if (hasViolations) {
+      done('aXe has discovered some accessibility violations')
+    } else {
+      done()
+    }
+  })
 })
