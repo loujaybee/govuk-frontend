@@ -1,3 +1,5 @@
+ignoredAccessibilityRules:
+- checkboxgroup # Avoid errors relating to checkboxes not being rendered with a fieldset
 examples:
 - name: default
   data:

@@ -1,3 +1,5 @@
+ignoredAccessibilityRules:
+- radiogroup # Avoid errors relating to radios not being rendered with a fieldset
 examples:
 - name: default
   data:
