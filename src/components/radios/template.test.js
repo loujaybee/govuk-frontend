@@ -4,8 +4,8 @@ const {
   render,
   getExamples,
   htmlWithClassName,
-  toHaveNoViolations,
-  runAccessibilityTests
+  runAccessibilityTests,
+  toHaveNoViolations
 } = require('../../../lib/jest-helpers')
 
 expect.extend(toHaveNoViolations)

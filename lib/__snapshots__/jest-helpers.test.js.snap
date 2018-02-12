@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Jest helpers toHaveNoViolations returns correctly formatted message when violations are present 1`] = `
+"[2mexpect([22m[31mreceived[39m[2m).toHaveNoViolations([22m[32mexpected[39m[2m)[22m
+
+Expected the HTML found at $('body > img') to have no violations:
+
+<img src=\\"\\">
+
+Recieved: 
+
+[31m\\"Images must have alternate text (image-alt)\\"[39m
+
+Try fixing it with this help: https://dequeuniversity.com/rules/axe/2.6/image-alt?application=axeAPI"
+`;
