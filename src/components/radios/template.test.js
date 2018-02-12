@@ -8,78 +8,82 @@ const axe = require('axe-core')
 
 const examples = getExamples('radios')
 
-expect.extend({
-  toHaveNoAxeViolations (violation, expected) {
-
-
-    var _renderNode = function (node) {
-      return ' Check the HTML:\n' +
-        ' `' +
-        node.html +
-        '`\n' +
-        ' found with the selector:\n' +
-        ' "' +
-        node.target.join(', ') +
-        '"'
-    }
+const toHaveNoViolations = {
+  toHaveNoViolations (results) {
+    const violations = results.violations
 
     const reporter = violations => {
-      if (typeof violations !== 'undefined' && violations.length !== 0) {
-        return violations.map(function (violation) {
-          var help = 'Problem: ' + violation.help + ' (' + violation.id + ')'
-          var helpUrl = 'Try fixing it with this help: ' + violation.helpUrl
-          var htmlAndTarget = violation.nodes.map(_renderNode).join('\n\n')
-
-          return [ help, htmlAndTarget, helpUrl ].join('\n\n\n')
-        }).join('\n\n- - -\n\n')
-      } else {
-        return false
+      if (typeof violations === 'undefined' || violations.length === 0) {
+        return []
       }
+
+      return violations.map(violation => {
+        var htmlAndTarget = violation.nodes.map(node => {
+          const selector = node.target.join(', ')
+          return (
+            `Expected the HTML found at $('${selector}') to have no violations:` +
+            `\n\n` +
+            node.html
+          )
+        }).join('\n\n')
+
+        return (
+          `Recieved: ` +
+          `\n\n` +
+          `${htmlAndTarget}\n\n` +
+          `\n\n` +
+          this.utils.printReceived(`${violation.help} (${violation.id})`) +
+          `\n\n` +
+          `Try fixing it with this help: ${violation.helpUrl}\n\n`
+        )
+      }).join('- - -\n\n')
     }
 
-    const formatedViolations = reporter(violation)
+    const formatedViolations = reporter(violations)
     const pass = formatedViolations.length === 0
 
-    const message = () => formatedViolations
-
-    return { actual: violation, message, pass }
-  }
-})
-
-describe('Radios', () => {
-  it('default passes aXe', done => {
-    const $ = render('radios', examples.default)
-
-    document.body.innerHTML = $('body').html()
-
-    const options = {
-      rules: {
-        'landmark-one-main': { enabled: false },
-        // Esnures each document has a <main> attribute
-        'document-title': { enabled: false },
-        // Ensures each HTML document contains a non-empty <title> element
-        'html-has-lang': { enabled: false },
-        // Ensures every HTML document has a lang attribute
-        // Ensures each page has at least one mechanism for a user to bypass navigation and jump straight to the content
-        bypass: { enabled: false }
-      }
+    const message = () => {
+      return this.utils.matcherHint('.toHaveNoViolations') +
+            '\n\n' +
+            `${formatedViolations}`
     }
 
-    // expect(true).toEqual(false)
+    return { actual: violations, message, pass }
+  }
+}
 
-    axe.run(document, options, (err, results) => {
+expect.extend(toHaveNoViolations)
+
+function runAccessibilityTests ($) {
+  document.body.innerHTML = $('body').html()
+
+  const options = {
+    rules: {
+      'landmark-one-main': { enabled: false },
+      // Esnures each document has a <main> attribute
+      'document-title': { enabled: false },
+      // Ensures each HTML document contains a non-empty <title> element
+      'html-has-lang': { enabled: false },
+      // Ensures every HTML document has a lang attribute
+      // Ensures each page has at least one mechanism for a user to bypass navigation and jump straight to the content
+      bypass: { enabled: false }
+    }
+  }
+
+  return new Promise((resolve, reject) => {
+    axe.run(document.body, options, (err, results) => {
       if (err) throw err
-      // aXe captures thrown errors so use a setTimeout to avoid this.
-      // setTimeout(() => {
-          // expect(reporter(results.violations)).toEqual([])
-        expect(results.violations).toHaveNoAxeViolations()
-        try {
-        } catch (e) {
-          // swallow errors that make jest messy
-        }
-        done()
-      // }, 0)
+      resolve(results)
     })
+  })
+}
+
+describe('Radios', () => {
+  it('default passes aXe', async () => {
+    const $ = render('radios', examples.default)
+
+    const results = await runAccessibilityTests($)
+    expect(results).toHaveNoViolations()
   })
 
   it('render example with minimum required name and items', () => {
