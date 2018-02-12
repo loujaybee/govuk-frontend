@@ -46,10 +46,7 @@ gulp.task('copy:icons', () => {
 // --------------------------------------
 gulp.task('test', cb => {
   runsequence(
-              'js:lint',
               'scss:lint',
-              'html:axe',
-              'html:tenon',
               cb)
 })
 

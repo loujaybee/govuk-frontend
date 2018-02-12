@@ -1,85 +1,19 @@
-/* globals describe, it, expect */
+/* eslint-env jest */
 
-const { render, getExamples, htmlWithClassName } = require(
-  '../../../lib/jest-helpers'
-)
-
-const axe = require('axe-core')
-
-const examples = getExamples('radios')
-
-const toHaveNoViolations = {
-  toHaveNoViolations (results) {
-    const violations = results.violations
-
-    const reporter = violations => {
-      if (typeof violations === 'undefined' || violations.length === 0) {
-        return []
-      }
-
-      return violations.map(violation => {
-        var htmlAndTarget = violation.nodes.map(node => {
-          const selector = node.target.join(', ')
-          return (
-            `Expected the HTML found at $('${selector}') to have no violations:` +
-            `\n\n` +
-            node.html
-          )
-        }).join('\n\n')
-
-        return (
-          `Recieved: ` +
-          `\n\n` +
-          `${htmlAndTarget}\n\n` +
-          `\n\n` +
-          this.utils.printReceived(`${violation.help} (${violation.id})`) +
-          `\n\n` +
-          `Try fixing it with this help: ${violation.helpUrl}\n\n`
-        )
-      }).join('- - -\n\n')
-    }
-
-    const formatedViolations = reporter(violations)
-    const pass = formatedViolations.length === 0
-
-    const message = () => {
-      return this.utils.matcherHint('.toHaveNoViolations') +
-            '\n\n' +
-            `${formatedViolations}`
-    }
-
-    return { actual: violations, message, pass }
-  }
-}
+const {
+  render,
+  getExamples,
+  htmlWithClassName,
+  toHaveNoViolations,
+  runAccessibilityTests
+} = require('../../../lib/jest-helpers')
 
 expect.extend(toHaveNoViolations)
 
-function runAccessibilityTests ($) {
-  document.body.innerHTML = $('body').html()
-
-  const options = {
-    rules: {
-      'landmark-one-main': { enabled: false },
-      // Esnures each document has a <main> attribute
-      'document-title': { enabled: false },
-      // Ensures each HTML document contains a non-empty <title> element
-      'html-has-lang': { enabled: false },
-      // Ensures every HTML document has a lang attribute
-      // Ensures each page has at least one mechanism for a user to bypass navigation and jump straight to the content
-      bypass: { enabled: false }
-    }
-  }
-
-  return new Promise((resolve, reject) => {
-    axe.run(document.body, options, (err, results) => {
-      if (err) throw err
-      resolve(results)
-    })
-  })
-}
+const examples = getExamples('radios')
 
 describe('Radios', () => {
-  it('default passes aXe', async () => {
+  it('default example passes accessibility tests', async () => {
     const $ = render('radios', examples.default)
 
     const results = await runAccessibilityTests($)
@@ -221,7 +155,7 @@ describe('Radios', () => {
       expect($lastInput.attr('disabled')).toEqual('disabled')
     })
 
-    it('render checked', () => {
+    it('render checked', async () => {
       const $ = render('radios', {
         name: 'example-name',
         items: [
@@ -235,6 +169,14 @@ describe('Radios', () => {
         '.govuk-c-radios__item:last-child input'
       )
       expect($lastInput.attr('checked')).toEqual('checked')
+
+      const results = await runAccessibilityTests($, {
+        rules: {
+          // Component is rendered in isolation so ignore `radiogroup` rule
+          'radiogroup': { enabled: false }
+        }
+      })
+      expect(results).toHaveNoViolations()
     })
   })
 

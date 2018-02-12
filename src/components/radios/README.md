@@ -16,9 +16,13 @@ More information about when to use radios can be found on [GOV.UK Design System]
 
 #### Markup
 
-    <div class="govuk-c-radios">
+    <img src="http://fillmurray.com/50/50">
+    <img src="http://fillmurray.com/51/51">
 
-      <fieldset class="govuk-c-fieldset">
+    <a href="#test"></a>
+    <a href="#test2"></a>
+
+    <fieldset class="govuk-c-fieldset">
 
         <legend class="govuk-c-fieldset__legend">
           Have you changed your name?
@@ -26,6 +30,8 @@ More information about when to use radios can be found on [GOV.UK Design System]
           <span class="govuk-c-fieldset__hint">This includes changing your last name or spelling your name differently.</span>
 
         </legend>
+
+      <div class="govuk-c-radios">
 
         <div class="govuk-c-radios__item">
           <input class="govuk-c-radios__input" id="example-1" name="example" type="radio" value="yes">
@@ -42,9 +48,9 @@ More information about when to use radios can be found on [GOV.UK Design System]
 
           </label>
         </div>
-        </fieldset>
 
-    </div>
+      </div>
+      </fieldset>
 
 #### Macro
 
@@ -74,9 +80,13 @@ More information about when to use radios can be found on [GOV.UK Design System]
 
 #### Markup
 
-    <div class="govuk-c-radios">
+    <img src="http://fillmurray.com/50/50">
+    <img src="http://fillmurray.com/51/51">
 
-      <fieldset class="govuk-c-fieldset">
+    <a href="#test"></a>
+    <a href="#test2"></a>
+
+    <fieldset class="govuk-c-fieldset">
 
         <legend class="govuk-c-fieldset__legend">
           Have you changed your name?
@@ -84,6 +94,8 @@ More information about when to use radios can be found on [GOV.UK Design System]
           <span class="govuk-c-fieldset__hint">This includes changing your last name or spelling your name differently.</span>
 
         </legend>
+
+      <div class="govuk-c-radios">
 
         <div class="govuk-c-radios__item">
           <input class="govuk-c-radios__input" id="example-disabled-1" name="example-disabled" type="radio" value="yes" disabled>
@@ -100,9 +112,9 @@ More information about when to use radios can be found on [GOV.UK Design System]
 
           </label>
         </div>
-        </fieldset>
 
-    </div>
+      </div>
+      </fieldset>
 
 #### Macro
 
@@ -133,9 +145,13 @@ More information about when to use radios can be found on [GOV.UK Design System]
 
 #### Markup
 
-    <div class="govuk-c-radios">
+    <img src="http://fillmurray.com/50/50">
+    <img src="http://fillmurray.com/51/51">
 
-      <fieldset class="govuk-c-fieldset">
+    <a href="#test"></a>
+    <a href="#test2"></a>
+
+    <fieldset class="govuk-c-fieldset">
 
         <legend class="govuk-c-fieldset__legend">
           <h1 class="govuk-heading-l">Which part of the Housing Act was your licence issued under?</h1>
@@ -143,6 +159,8 @@ More information about when to use radios can be found on [GOV.UK Design System]
           <span class="govuk-c-fieldset__hint">Select one of the options below.</span>
 
         </legend>
+
+      <div class="govuk-c-radios">
 
         <div class="govuk-c-radios__item">
           <input class="govuk-c-radios__input" id="housing-act-1" name="housing-act" type="radio" value="part-2">
@@ -159,9 +177,9 @@ More information about when to use radios can be found on [GOV.UK Design System]
 
           </label>
         </div>
-        </fieldset>
 
-    </div>
+      </div>
+      </fieldset>
 
 #### Macro
 
@@ -189,6 +207,12 @@ More information about when to use radios can be found on [GOV.UK Design System]
 [Preview the radios--without-fieldset example](http://govuk-frontend-review.herokuapp.com/components/radios/without-fieldset/preview)
 
 #### Markup
+
+    <img src="http://fillmurray.com/50/50">
+    <img src="http://fillmurray.com/51/51">
+
+    <a href="#test"></a>
+    <a href="#test2"></a>
 
     <div class="govuk-c-radios">
 
@@ -244,9 +268,13 @@ More information about when to use radios can be found on [GOV.UK Design System]
 
 #### Markup
 
-    <div class="govuk-c-radios">
+    <img src="http://fillmurray.com/50/50">
+    <img src="http://fillmurray.com/51/51">
 
-      <fieldset class="govuk-c-fieldset app-c-fieldset--custom-modifier" data-attribute="value" data-second-attribute="second-value">
+    <a href="#test"></a>
+    <a href="#test2"></a>
+
+    <fieldset class="govuk-c-fieldset app-c-fieldset--custom-modifier" data-attribute="value" data-second-attribute="second-value">
 
         <legend class="govuk-c-fieldset__legend">
           Have you changed your name?
@@ -258,6 +286,8 @@ More information about when to use radios can be found on [GOV.UK Design System]
           </span>
 
         </legend>
+
+      <div class="govuk-c-radios">
 
         <div class="govuk-c-radios__item">
           <input class="govuk-c-radios__input" id="example-1" name="example" type="radio" value="yes">
@@ -274,9 +304,9 @@ More information about when to use radios can be found on [GOV.UK Design System]
 
           </label>
         </div>
-        </fieldset>
 
-    </div>
+      </div>
+      </fieldset>
 
 #### Macro
 
