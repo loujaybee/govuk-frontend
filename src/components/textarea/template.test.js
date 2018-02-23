@@ -80,6 +80,21 @@ describe('Textarea', () => {
   })
 
   describe('with dependant components', () => {
+    it('have correct nesting order', () => {
+      const $ = render('textarea', {
+        id: 'nested-order',
+        label: {
+          'text': 'Full address'
+        },
+        errorMessage: {
+          'text': 'Error message'
+        }
+      })
+
+      const $component = $('.govuk-o-form-group > .govuk-c-textarea')
+      expect($component.length).toBeTruthy()
+    })
+
     it('renders with label', () => {
       const $ = render('textarea', {
         id: 'my-textarea',
