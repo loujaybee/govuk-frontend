@@ -1,16 +1,3 @@
-{% macro _link(params) %}
-  <a
-    class="govuk-c-footer__link"
-    href="{{ params.href }}"
-    {% if params.lang %}
-      lang="{{ params.lang }}"
-    {% endif %}
-    {% if params.hreflang %}
-      hreflang="{{ params.hreflang }}"
-    {% endif %}
-  >{{ params.text }}</a>
-{% endmacro %}
-
 <footer class="govuk-c-footer">
   <div class="govuk-o-width-container">
     <div class="govuk-c-footer__meta">
@@ -21,7 +8,9 @@
             {% for item in params.meta.items %}
               <li class="govuk-c-footer__inline-list-item">
                 {% if item.href %}
-                  {{ _link(item) }}
+                  <a class="govuk-c-footer__link" href="{{ item.href }}">
+                    {{ item.text }}
+                  </a>
                 {% elseif item.html %}
                   {{ item.html | safe }}
                 {% endif %}

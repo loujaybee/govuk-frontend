@@ -13,7 +13,5 @@ examples:
         - href: '#2'
           text: 'Item 2'
         - href: '#3'
-          text: 'Eitem 3'
-          lang: 'cy'
-          hreflang: 'cy'
+          text: 'Item 3'
         - html: Text that explains link <a class="govuk-c-footer__link" href="#">link that was explained</a>
