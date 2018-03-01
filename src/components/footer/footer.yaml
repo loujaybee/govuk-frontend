@@ -4,6 +4,7 @@ examples:
     {}
 
 - name: with-meta
+  readme: false
   description: Secondary navigation to meta information relating to the site
   data:
     meta:
@@ -17,6 +18,7 @@ examples:
         - html: Text that explains link <a class="govuk-c-footer__link" href="#">link that was explained</a>
 
 - name: with-navigation
+  readme: false
   data:
     navigation:
       - title: Two column list
@@ -44,6 +46,7 @@ examples:
             text: 'Navigation item 3'
 
 - name: GOV.UK
+  readme: false
   description: a full example based on GOV.UK's current footer
   data:
     navigation:
