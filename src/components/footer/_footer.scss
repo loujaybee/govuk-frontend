@@ -1,4 +1,96 @@
 @include govuk-exports("footer") {
-  .govuk-c-footer { // sass-lint:disable-line no-empty-rulesets
+
+  // TODO: How do these colours fit into the colour scale?
+  $govuk-footer-background: $govuk-grey-3;
+  $govuk-footer-border: #a1acb2;
+  $govuk-footer-border-top: $govuk-footer-border;
+  $govuk-footer-text: #454a4c;
+  $govuk-footer-link: $govuk-footer-text;
+  $govuk-footer-link-hover: #171819;
+
+  .govuk-c-footer {
+    @include govuk-font-regular;
+    @include govuk-typography-responsive($govuk-font-16);
+
+    padding-top: $govuk-spacing-scale-7;
+    padding-right: $govuk-spacing-scale-3;
+    padding-bottom: $govuk-spacing-scale-5;
+    padding-left: $govuk-spacing-scale-3;
+
+    border-top: 1px solid $govuk-footer-border-top;
+    color: $govuk-footer-text;
+    background: $govuk-footer-background;
+  }
+
+  .govuk-c-footer__link {
+    @include govuk-focusable-fill;
+
+    &:link,
+    &:visited {
+      color: $govuk-footer-link;
+    }
+
+    &:hover,
+    &:active {
+      color: $govuk-footer-link-hover;
+    }
+  }
+
+  .govuk-c-footer__meta::after {
+    content: " ";
+    display: table;
+    clear: both;
+  }
+
+  .govuk-c-footer__meta {
+    display: flex;
+    margin-right: -($govuk-gutter / 2);
+    margin-left: -($govuk-gutter / 2);
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  .govuk-c-footer__meta-item {
+    margin-right: ($govuk-gutter / 2);
+    margin-bottom: $govuk-spacing-scale-5;
+    margin-left: ($govuk-gutter / 2);
+  }
+
+  .govuk-c-footer__meta-item--grow {
+    flex: 1;
+    @include mq ($until: tablet) {
+      flex-basis: 320px;
+    }
+  }
+
+  .govuk-c-footer__licence-logo {
+    display: inline-block;
+    margin-right: $govuk-spacing-scale-2;
+    @include mq ($until: desktop) {
+      margin-bottom: $govuk-spacing-scale-3;
+    }
+    vertical-align: top;
+  }
+
+  .govuk-c-footer__licence-description {
+    display: inline-block;
+  }
+
+  .govuk-c-footer__copyright-logo {
+    display: block;
+    min-width: 125px; // Based on the govuk-crest-2x.png image width: 250px/2
+    margin: auto;
+    padding-top: (102px + $govuk-spacing-scale-2); // Based on the govuk-crest-2x.png image height + spacing: 204px/2 + $govuk-spacing-scale-2
+    background-image: govuk-file-url("govuk-crest.png");
+    @include govuk-h-device-pixel-ratio {
+      background-image: govuk-file-url("govuk-crest-2x.png");
+    }
+    background-repeat: no-repeat;
+    background-position: 50% 0%;
+    background-size: 125px 102px; // Based on the govuk-crest-2x.png image size: 250x204px/2
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
   }
 }
