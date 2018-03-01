@@ -4,21 +4,16 @@ examples:
     {}
 
 - name: with-meta
-  description: as seen on GOV.UK's footer
+  description: Secondary navigation to meta information relating to the site
   data:
     meta:
       items:
-        - href: '/help'
-          text: Help
-        - href: '/help/cookies'
-          text: Cookies
-        - href: '/contact'
-          text: Contact
-        - href: '/help/terms-conditions'
-          text: Terms and conditions
-        - href: '/cymraeg'
+        - href: '#1'
+          text: 'Item 1'
+        - href: '#2'
+          text: 'Item 2'
+        - href: '#3'
+          text: 'Eitem 3'
           lang: 'cy'
           hreflang: 'cy'
-          text: Rhestr o Wasanaethau Cymraeg
-        - html: |
-            Built by the <a class="govuk-c-footer__link" href="https://www.gov.uk/government/organisations/government-digital-service">Government Digital Service</a>
+        - html: Text that explains link <a class="govuk-c-footer__link" href="#">link that was explained</a>

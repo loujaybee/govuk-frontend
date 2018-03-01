@@ -37,9 +37,9 @@ describe('footer', () => {
       const $list = $component.find('ul.govuk-c-footer__inline-list')
       const $items = $list.find('li.govuk-c-footer__inline-list-item')
       const $firstItem = $items.find('a.govuk-c-footer__link:first-child')
-      expect($items.length).toEqual(6)
-      expect($firstItem.attr('href')).toEqual('/help')
-      expect($firstItem.text()).toContain('Help')
+      expect($items.length).toEqual(4)
+      expect($firstItem.attr('href')).toEqual('#1')
+      expect($firstItem.text()).toContain('Item 1')
     })
 
     it('renders html', () => {
