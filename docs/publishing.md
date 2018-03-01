@@ -117,8 +117,13 @@ These tests live in `after-build-dist.test.js`.
 
 16. Open a PR for these changes.
 
-17. Run `lerna clean` to remove `node_modules` directory created in each package. 
+17. Run `lerna clean` to remove `node_modules` directory created in each package.
 As documented in [Lerna docs](https://github.com/lerna/lerna/#clean)
+
+18. Create PRs to update the GOV.UK Design System and the Prototype Kit to use the new release of GOV.UK Frontend. Move the Trello cards to done when finished.
+
+19. Create two new Trello cards for updating GOV.UK Design System, and the Prototype Kit. Add these to the
+next release column, in preparation for the next release. 
 
 ## Updating other repos that consume `govuk-frontend`
 
