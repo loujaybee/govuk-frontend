@@ -93,4 +93,16 @@
     text-decoration: none;
     white-space: nowrap;
   }
+
+  .govuk-c-footer__inline-list {
+    margin-top: 0;
+    margin-bottom: $govuk-spacing-scale-3;
+    padding: 0;
+  }
+
+  .govuk-c-footer__inline-list-item {
+    display: inline-block;
+    margin-right: $govuk-spacing-scale-3;
+    margin-bottom: $govuk-spacing-scale-1;
+  }
 }

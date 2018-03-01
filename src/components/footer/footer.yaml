@@ -2,3 +2,23 @@ examples:
 - name: default
   data:
     {}
+
+- name: with-meta
+  description: as seen on GOV.UK's footer
+  data:
+    meta:
+      items:
+        - href: '/help'
+          text: Help
+        - href: '/help/cookies'
+          text: Cookies
+        - href: '/contact'
+          text: Contact
+        - href: '/help/terms-conditions'
+          text: Terms and conditions
+        - href: '/cymraeg'
+          lang: 'cy'
+          hreflang: 'cy'
+          text: Rhestr o Wasanaethau Cymraeg
+        - html: |
+            Built by the <a class="govuk-c-footer__link" href="https://www.gov.uk/government/organisations/government-digital-service">Government Digital Service</a>

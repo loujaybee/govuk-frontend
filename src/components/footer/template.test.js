@@ -13,4 +13,50 @@ describe('footer', () => {
     const results = await axe($.html())
     expect(results).toHaveNoViolations()
   })
+
+  describe('meta', () => {
+    it('passes accessibility tests', async () => {
+      const $ = render('footer', examples['with-meta'])
+
+      const results = await axe($.html())
+      expect(results).toHaveNoViolations()
+    })
+
+    it('renders heading', () => {
+      const $ = render('footer', examples['with-meta'])
+
+      const $component = $('.govuk-c-footer')
+      const $heading = $component.find('h2.govuk-h-visually-hidden')
+      expect($heading.text()).toEqual('Support links')
+    })
+
+    it('renders links', () => {
+      const $ = render('footer', examples['with-meta'])
+
+      const $component = $('.govuk-c-footer')
+      const $list = $component.find('ul.govuk-c-footer__inline-list')
+      const $items = $list.find('li.govuk-c-footer__inline-list-item')
+      const $firstItem = $items.find('a.govuk-c-footer__link:first-child')
+      expect($items.length).toEqual(6)
+      expect($firstItem.attr('href')).toEqual('/help')
+      expect($firstItem.text()).toContain('Help')
+    })
+
+    it('renders html', () => {
+      const $ = render('footer', {
+        meta: {
+          items: [
+            {
+              html: 'example <b>HTML</b> content'
+            }
+          ]
+        }
+      })
+
+      const $component = $('.govuk-c-footer')
+      const $list = $component.find('ul.govuk-c-footer__inline-list')
+      const $item = $list.find('li.govuk-c-footer__inline-list-item')
+      expect($item.html()).toContain('example <b>HTML</b> content')
+    })
+  })
 })
