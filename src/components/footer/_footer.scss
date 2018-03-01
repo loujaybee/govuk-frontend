@@ -132,8 +132,13 @@
     flex: 1; // Support: Flexbox
   }
 
+  .govuk-c-footer__section:last-child {
+    flex: 0; // Support: Flexbox;
+  }
+
   .govuk-c-footer__list {
     display: inline-block;
+    width: 100%;
     margin: 0;
     margin-right: $govuk-gutter;
     padding: 0;
@@ -144,11 +149,11 @@
   }
 
   .govuk-c-footer__list--columns-2 {
-    columns: 2; // Support: Columns
+    column-count: 2; // Support: Columns
   }
 
   .govuk-c-footer__list--columns-3 {
-    columns: 3; // Support: Columns
+    column-count: 3; // Support: Columns
   }
 
   .govuk-c-footer__list:last-child {
