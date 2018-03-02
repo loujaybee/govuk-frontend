@@ -3,9 +3,11 @@ set -e
 
 LATEST_PUBLISHED_TAG=$(git describe --abbrev=0 --tags)
 
+FOLDERS=$(ls -d ./packages/*) &&
+echo "$FOLDERS"
 npm run build:packages &&
-lerna publish --skip-git --skip-npm &&
-npm run build:dist
+# lerna publish --skip-git --skip-npm &&
+# npm run build:dist
 
 
 ALL_PACKAGE_VERSION=$(node -p "require('./packages/all/package.json').version")
